@@ -6,7 +6,7 @@ const Informacion = () => {
     <section id="informacion" className={styles.infoSection}>
             <div className={styles.infoBackground}>
               <img 
-                src="../public/images/romantic-ocean-dinner.png" 
+                src="/images/romantic-ocean-dinner.png" 
                 alt="Ambiente romántico del restaurante"
                 className={styles.infoBackgroundImage}
               />

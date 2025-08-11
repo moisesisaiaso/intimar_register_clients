@@ -6,7 +6,7 @@ const Recomendaciones = ({categoriaActiva, renderEstrellas}) => {
         <section className={styles.recomendacionesSection}>
                 <div className={styles.recomendacionesBackground}>
                   <img 
-                    src="../public/images/romantic-ocean-dinner.png" 
+                    src="/images/romantic-ocean-dinner.png" 
                     alt="Cena romántica junto al mar"
                     className={styles.recomendacionesBackgroundImage}
                   />

@@ -5,7 +5,7 @@ const Inicio = () => {
         <section id="inicio" className={styles.hero}>
                 <div className={styles.heroBackground}>
                   <img 
-                    src="../public/images/paracas-bay-restaurant-sunset.png" 
+                    src="/images/paracas-bay-restaurant-sunset.png" 
                     alt="Atardecer en Paracas Bay"
                     className={styles.heroBackgroundImage}
                   />

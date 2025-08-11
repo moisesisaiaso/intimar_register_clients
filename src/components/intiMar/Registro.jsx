@@ -180,7 +180,7 @@ const Registro = ({}) => {
         <section id="registro" className={styles.formSection}>
                 <div className={styles.formBackground}>
                   <img 
-                    src="../public/images/oceanfront-dinner.png" 
+                    src="/images/oceanfront-dinner.png" 
                     alt="Experiencia gastronómica frente al mar"
                     className={styles.formBackgroundImage}
                   />
