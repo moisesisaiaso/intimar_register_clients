@@ -1,0 +1,1167 @@
+:root {
+  --intimar-magenta: #e91e63;
+  --intimar-teal: #00bcd4;
+  --intimar-gold: #ffc107;
+  --intimar-gray: #757575;
+  --intimar-light-magenta: #fce4ec;
+  --intimar-light-teal: #e0f7fa;
+  --intimar-light-gold: #fff8e1;
+}
+
+.container {
+  min-height: 100vh;
+  background: linear-gradient(to bottom, var(--intimar-light-teal), var(--intimar-light-magenta));
+}
+
+/* Botón Flotante Ver Carta */
+.floatingCartaButton {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background: linear-gradient(45deg, var(--intimar-magenta), var(--intimar-teal));
+  color: white;
+  padding: 1rem 1.5rem;
+  border-radius: 50px; 
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
+  z-index: 1000;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 2px solid rgba(255, 255, 255, 0.35);
+}
+
+.floatingCartaButton:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 35px rgba(233, 30, 99, 0.5);
+  background: linear-gradient(45deg, var(--intimar-teal), var(--intimar-magenta));
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+@media (max-width: 768px) {
+  .floatingCartaButton {
+    bottom: 1rem;
+    right: 1rem;
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+  }
+}
+
+.header {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 2px solid var(--intimar-teal);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 4px 20px rgba(0, 188, 212, 0.1);
+}
+
+.headerContent {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.logoText h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.logoTextInti {
+  color: var(--intimar-magenta);
+}
+
+.logoTextMar {
+  color: var(--intimar-teal);
+}
+
+.logoText p {
+  font-size: 0.9rem;
+  color: var(--intimar-gray);
+  margin: 0;
+  font-weight: 500;
+}
+
+.nav {
+  display: none;
+  gap: 2rem;
+}
+
+.nav a {
+  color: var(--intimar-teal);
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
+  position: relative;
+}
+
+.nav a:hover {
+  color: var(--intimar-magenta);
+  background: var(--intimar-light-gold);
+  transform: translateY(-2px);
+}
+
+@media (min-width: 768px) {
+  .nav {
+    display: flex;
+  }
+}
+
+.hero {
+  position: relative;
+  padding: 6rem 1rem;
+  text-align: center;
+  overflow: hidden;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.heroBackgroundImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(233, 30, 99, 0.7), rgba(0, 188, 212, 0.7));
+  z-index: 2;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 3;
+  max-width: 64rem;
+  margin: 0 auto;
+  color: white;
+}
+
+.badge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  margin-bottom: 2rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.heroTitle {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 2rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.heroTitleWelcome {
+  color: white;
+}
+
+.heroTitleInti {
+  color: var(--intimar-magenta);
+}
+
+.heroTitleMar {
+  color: var(--intimar-gold);
+}
+
+.heroDescription {
+  font-size: 1.3rem;
+  line-height: 1.7;
+  font-weight: 500;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+}
+
+@media (min-width: 768px) {
+  .heroTitle {
+    font-size: 4.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .heroTitle {
+    font-size: 2.5rem;
+  }
+  
+  .heroDescription {
+    font-size: 1.1rem;
+  }
+  
+  .badge {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+  }
+}
+
+.formSection {
+  position: relative;
+  padding: 5rem 1rem;
+  overflow: hidden;
+}
+
+.formBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.formBackgroundImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.3;
+}
+
+.formOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(224, 247, 250, 0.9));
+  z-index: 2;
+}
+
+.formContainer {
+  position: relative;
+  z-index: 3;
+  max-width: 50rem;
+  margin: 0 auto;
+}
+
+.formCard {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(15px);
+  border-radius: 2rem;
+  box-shadow: 0 30px 60px rgba(233, 30, 99, 0.15);
+  border: 2px solid var(--intimar-light-teal);
+}
+
+.formHeader {
+  text-align: center;
+  padding: 3rem 2rem 1rem;
+  background: linear-gradient(135deg, var(--intimar-light-magenta), var(--intimar-light-teal));
+  border-radius: 2rem 2rem 0 0;
+}
+
+.formTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.formTitleRegistro {
+  color: var(--intimar-magenta);
+}
+
+.formTitleCliente {
+  color: var(--intimar-teal);
+}
+
+.formDescription {
+  font-size: 1.2rem;
+  color: var(--intimar-gray);
+  font-weight: 500;
+}
+
+.formContent {
+  padding: 2.5rem;
+}
+
+.formGrid {
+  display: grid;
+  gap: 2rem;
+}
+
+.formRow {
+  display: grid;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .formRow {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.fieldGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.label {
+  color: var(--intimar-teal);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.required {
+  color: var(--intimar-magenta);
+}
+
+.input, .select, .textarea {
+  padding: 1rem;
+  border: 2px solid var(--intimar-light-teal);
+  border-radius: 1rem;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.input:focus, .select:focus, .textarea:focus {
+  outline: none;
+  border-color: var(--intimar-teal);
+  box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.1);
+  transform: translateY(-2px);
+}
+
+.textarea {
+  resize: vertical;
+  min-height: 5rem;
+}
+
+.error {
+  color: var(--intimar-magenta);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.submitButton {
+  width: 100%;
+  background: linear-gradient(45deg, var(--intimar-magenta), var(--intimar-teal));
+  color: white;
+  border: none;
+  padding: 1.25rem;
+  border-radius: 1rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  box-shadow: 0 10px 30px rgba(233, 30, 99, 0.3);
+}
+
+.submitButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(233, 30, 99, 0.4);
+}
+
+.submitButton:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.optionalButton {
+  background: linear-gradient(45deg, var(--intimar-light-magenta), var(--intimar-light-teal));
+  border: 2px solid var(--intimar-teal);
+  color: var(--intimar-teal);
+  padding: 0.75rem 1.5rem;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.optionalButton:hover {
+  background: var(--intimar-teal);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.infoSection {
+  position: relative;
+  padding: 5rem 1rem;
+  overflow: hidden;
+}
+
+.infoBackground {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.infoBackgroundImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.4;
+}
+
+.infoOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 248, 225, 0.9), rgba(224, 247, 250, 0.8));
+  z-index: 2;
+}
+
+.infoContainer {
+  position: relative;
+  z-index: 3;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.infoHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.infoTitle {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.infoTitleInfo {
+  color: var(--intimar-magenta);
+}
+
+.infoTitleRestaurante {
+  color: var(--intimar-teal);
+}
+
+.infoSubtitle {
+  font-size: 1.3rem;
+  color: var(--intimar-gray);
+  font-weight: 500;
+}
+
+.infoGrid {
+  display: grid;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+@media (min-width: 768px) {
+  .infoGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .infoGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.infoCard {
+  text-align: center;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+  border: 2px solid var(--intimar-light-teal);
+  border-radius: 1.5rem;
+  padding: 2.5rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 30px rgba(0, 188, 212, 0.1);
+}
+
+.infoCard:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 50px rgba(233, 30, 99, 0.2);
+  border-color: var(--intimar-magenta);
+}
+
+.infoIcon {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.infoCardTitle {
+  color: var(--intimar-teal);
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.infoCardContent {
+  color: var(--intimar-gray);
+  font-weight: 500;
+}
+
+.infoCardContent p {
+  margin: 0.75rem 0;
+}
+
+.infoCardContent strong {
+  font-weight: 700;
+  color: var(--intimar-magenta);
+}
+
+.mapSection {
+  padding: 3rem 1rem;
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.mapContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.mapHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.mapTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.mapTitleUbicacion {
+  color: var(--intimar-magenta);
+}
+
+.mapTitleRestaurante {
+  color: var(--intimar-teal);
+}
+
+.mapDescription {
+  font-size: 1.2rem;
+  color: var(--intimar-gray);
+  font-weight: 500;
+}
+
+.mapWrapper {
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow: 0 20px 50px rgba(0, 188, 212, 0.2);
+  border: 3px solid var(--intimar-teal);
+}
+
+.mapFrame {
+  width: 100%;
+  height: 450px;
+  border: none;
+}
+
+.footer {
+  background: linear-gradient(135deg, var(--intimar-magenta), var(--intimar-teal));
+  color: white;
+  padding: 4rem 1rem;
+}
+
+.footerContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footerGrid {
+  display: grid;
+  gap: 3rem;
+  margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .footerGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.footerLogo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.footerLogoText h4 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0;
+}
+
+.footerLogoText p {
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  font-weight: 500;
+}
+
+.footerDescription {
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1.7;
+  font-weight: 500;
+}
+
+.footerSection h5 {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: var(--intimar-gold);
+}
+
+.contactList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.contactIcon {
+  font-size: 1.2rem;
+  color: var(--intimar-gold);
+}
+
+.contactText {
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 500;
+}
+
+.socialButtons {
+  display: flex;
+  gap: 1rem;
+}
+
+.socialButton {
+  width: 3rem;
+  height: 3rem;
+  border: 2px solid var(--intimar-gold);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--intimar-gold);
+  border-radius: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+}
+
+.socialButton:hover {
+  background: var(--intimar-gold);
+  color: var(--intimar-magenta);
+  transform: translateY(-3px);
+}
+
+.footerBottom {
+  border-top: 2px solid rgba(255, 255, 255, 0.2);
+  padding-top: 2rem;
+  text-align: center;
+}
+
+.footerBottom p {
+  color: rgba(255, 255, 255, 0.8);
+  margin: 0;
+  font-weight: 500;
+}
+
+.optionalFields {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 2px solid var(--intimar-light-teal);
+}
+
+.optionalTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--intimar-magenta);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Modal de información de pago mejorado */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2000;
+  padding: 1rem;
+  animation: modalFadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    backdrop-filter: blur(0px);
+  }
+  to {
+    opacity: 1;
+    backdrop-filter: blur(12px);
+  }
+}
+
+.modalContent {
+  background: white;
+  border-radius: 2.5rem;
+  padding: 0;
+  max-width: 650px;
+  width: 100%;
+  position: relative;
+  box-shadow: 
+    0 25px 80px rgba(0, 0, 0, 0.4),
+    0 0 0 1px rgba(255, 255, 255, 0.1);
+  max-height: 85vh;
+  overflow: hidden;
+  animation: modalSlideIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 3px solid transparent;
+  background-clip: padding-box;
+}
+
+.modalContent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 2.5rem;
+  padding: 3px;
+  background: linear-gradient(135deg, var(--intimar-magenta), var(--intimar-teal), var(--intimar-gold));
+  mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  mask-composite: exclude;
+  z-index: -1;
+}
+
+@keyframes modalSlideIn {
+  from {
+    transform: translateY(60px) scale(0.85);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.modalHeader {
+  background: linear-gradient(135deg, var(--intimar-magenta), var(--intimar-teal));
+  color: white;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.modalHeader::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: shimmer 3s ease-in-out infinite;
+}
+
+@keyframes shimmer {
+  0%, 100% { transform: translateX(-100%) translateY(-100%) rotate(0deg); }
+  50% { transform: translateX(0%) translateY(0%) rotate(180deg); }
+}
+
+.modalClose {
+  position: absolute;
+  top: 1.5rem;
+  right: 1.5rem;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: bold;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+  z-index: 10;
+}
+
+.modalClose:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+}
+
+.modalTitle {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  position: relative;
+  z-index: 2;
+}
+
+.modalSubtitle {
+  margin: 0.8rem 0 0 0;
+  opacity: 0.95;
+  font-size: 1.2rem;
+  font-weight: 500;
+  position: relative;
+  z-index: 2;
+}
+
+.modalBody {
+  padding: 2.5rem;
+  max-height: 55vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--intimar-teal) transparent;
+  scroll-behavior: smooth;
+}
+
+.modalBody::-webkit-scrollbar {
+  width: 12px;
+}
+
+.modalBody::-webkit-scrollbar-track {
+  background: linear-gradient(to bottom, var(--intimar-light-teal), var(--intimar-light-gold));
+  border-radius: 10px;
+  margin: 10px 0;
+}
+
+.modalBody::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, var(--intimar-magenta), var(--intimar-teal));
+  border-radius: 10px;
+  border: 2px solid transparent;
+  background-clip: content-box;
+  transition: all 0.3s ease;
+}
+
+.modalBody::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(45deg, var(--intimar-teal), var(--intimar-magenta));
+  transform: scaleY(1.1);
+}
+
+.bankInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.bankItem {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.8rem;
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(224, 247, 250, 0.6));
+  padding: 2.5rem;
+  border-radius: 2rem;
+  border: 2px solid transparent;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(10px);
+}
+
+.bankItem::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 5px;
+  background: linear-gradient(45deg, var(--intimar-magenta), var(--intimar-teal), var(--intimar-gold));
+  transform: scaleX(0);
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.bankItem:hover {
+  transform: translateY(-8px);
+  box-shadow: 
+    0 20px 50px rgba(0, 188, 212, 0.25),
+    0 0 0 1px var(--intimar-teal);
+  border-color: var(--intimar-teal);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(224, 247, 250, 0.8));
+}
+
+.bankItem:hover::before {
+  transform: scaleX(1);
+}
+
+.bankIcon {
+  font-size: 3rem;
+  color: var(--intimar-teal);
+  flex-shrink: 0;
+  background: linear-gradient(135deg, white, var(--intimar-light-teal));
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 
+    0 8px 25px rgba(0, 188, 212, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+  border: 3px solid var(--intimar-light-teal);
+}
+
+.bankItem:hover .bankIcon {
+  transform: scale(1.1) rotate(5deg);
+  box-shadow: 
+    0 12px 35px rgba(0, 188, 212, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.7);
+  border-color: var(--intimar-teal);
+}
+
+.bankDetails {
+  flex: 1;
+}
+
+.bankDetails p {
+  margin: 0.8rem 0;
+  color: var(--intimar-gray);
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.6;
+  transition: color 0.3s ease;
+}
+
+.bankItem:hover .bankDetails p {
+  color: #555;
+}
+
+.bankDetails strong {
+  color: var(--intimar-teal);
+  font-weight: 800;
+  font-size: 1.4rem;
+  display: block;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.bankItem:hover .bankDetails strong {
+  color: var(--intimar-magenta);
+  transform: translateX(5px);
+}
+
+.copyButton {
+  background: linear-gradient(45deg, var(--intimar-magenta), var(--intimar-teal));
+  color: white;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  margin-top: 1rem;
+  box-shadow: 0 4px 15px rgba(233, 30, 99, 0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.copyButton:hover {
+  background: linear-gradient(45deg, var(--intimar-teal), var(--intimar-magenta));
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(233, 30, 99, 0.4);
+}
+
+.copyButton:active {
+  transform: translateY(0) scale(0.98);
+}
+
+.qrSection {
+  background: linear-gradient(135deg, var(--intimar-light-magenta), var(--intimar-light-teal));
+  padding: 2.5rem;
+  border-radius: 2rem;
+  text-align: center;
+  border: 2px solid transparent;
+  margin-top: 2rem;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.4s ease;
+}
+
+.qrSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, var(--intimar-magenta), var(--intimar-teal));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+.qrSection:hover::before {
+  opacity: 0.05;
+}
+
+.qrSection:hover {
+  border-color: var(--intimar-magenta);
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(233, 30, 99, 0.2);
+}
+
+.qrTitle {
+  color: var(--intimar-magenta);
+  font-size: 1.5rem;
+  font-weight: 800;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.qrButtons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 1;
+}
+
+.qrButton {
+  background: linear-gradient(45deg, var(--intimar-magenta), var(--intimar-teal));
+  color: white;
+  border: none;
+  padding: 1.2rem 2rem;
+  border-radius: 30px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-size: 1.1rem;
+  box-shadow: 0 6px 20px rgba(233, 30, 99, 0.3);
+}
+
+.qrButton:hover {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 12px 35px rgba(233, 30, 99, 0.4);
+  background: linear-gradient(45deg, var(--intimar-teal), var(--intimar-magenta));
+}
+
+.modalFooter {
+  background: linear-gradient(135deg, var(--intimar-light-teal), var(--intimar-light-gold));
+  padding: 2rem;
+  text-align: center;
+  border-top: 3px solid var(--intimar-teal);
+  position: relative;
+}
+
+.modalFooter::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(45deg, var(--intimar-magenta), var(--intimar-teal), var(--intimar-gold));
+}
+
+.modalFooterText {
+  color: var(--intimar-gray);
+  font-size: 1.1rem;
+  margin: 0;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Responsive para el modal */
+@media (max-width: 768px) {
+  .modalContent {
+    max-width: 95vw;
+    border-radius: 2rem;
+    max-height: 90vh;
+  }
+  
+  .modalHeader {
+    padding: 2rem 1.5rem;
+  }
+  
+  .modalTitle {
+    font-size: 1.8rem;
+  }
+  
+  .modalBody {
+    padding: 2rem 1.5rem;
+    max-height: 60vh;
+  }
+  
+  .bankItem {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+  
+  .bankIcon {
+    width: 70px;
+    height: 70px;
+    font-size: 2.5rem;
+  }
+  
+  .qrButtons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .qrButton {
+    justify-content: center;
+    padding: 1rem 1.5rem;
+  }
+}

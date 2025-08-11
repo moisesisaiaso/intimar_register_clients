@@ -1,0 +1,74 @@
+
+/* Estilos base de Tailwind CSS */
+@import "tailwindcss/preflight";
+@import "tailwindcss/utilities";
+
+/* Importar estilos globales personalizados */
+@import './styles/globals.css';
+
+/* Estilos base adicionales */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--background);
+  color: var(--foreground);
+  font-size: 1.12rem;
+  line-height: 1.5;
+}
+
+/* Utilidades de Tailwind */
+@layer utilities {
+  /* Utilidades personalizadas pueden ir aquí */
+  .card {
+    background-color: var(--card);
+    color: var(--card-foreground);
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+  }
+}
+
+/* Asegurar que los elementos de formulario hereden fuentes */
+button, input, optgroup, select, textarea {
+  font-family: inherit;
+  font-size: 100%;
+  line-height: 1.15;
+  margin: 0;
+}
+
+/* Estilos para imágenes responsivas */
+img, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Estilos para enlaces */
+/* a {
+  @apply text-primary hover:underline;
+} */
+
+/* Clases de utilidad adicionales */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Estilos para el modo oscuro */
+@media (prefers-color-scheme: dark) {
+  html {
+    color-scheme: dark;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
