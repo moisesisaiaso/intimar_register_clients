@@ -67,7 +67,7 @@ const Carta = () => {
       <section className={styles.hero}>
         <div className={styles.heroBackground}>
           <img 
-            src="../public/images/paracas-bay-restaurant-sunset.png" 
+            src="/images/paracas-bay-restaurant-sunset.png" 
             alt="Atardecer en Paracas Bay"
             className={styles.heroBackgroundImage}
           />
@@ -98,7 +98,7 @@ const Carta = () => {
       <section className={styles.menuSection}>
         <div className={styles.menuBackground}>
           <img 
-            src="../public/images/oceanfront-dinner.png" 
+            src="/images/oceanfront-dinner.png" 
             alt="Cena frente al océano"
             className={styles.menuBackgroundImage}
           />
