@@ -1,4 +1,3 @@
-
 import styles from '../../styles/IntiMar.module.css'
 import { useForm } from 'react-hook-form'
 import { useState } from 'react'
@@ -10,6 +9,7 @@ import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useCrud } from "../../hooks/useCrud";
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -18,12 +18,11 @@ const Registro = ({}) => {
   const [showOptionalFields, setShowOptionalFields] = useState(false)
   const [serverErrors, setServerErrors] = useState({});
   const [showError, setShowError] = useState(false);
+  const [documentType, setDocumentType] = useState('dni');
+  const [ , ,createClient] = useCrud();
+  const navigate = useNavigate();
 
-  const [clients,getClients, createClient] = useCrud();
-
-  useEffect(() => {
-    getClients("/intimar/client");
-  }, []);
+  
 
   /*esta función se usa justo antes de enviar datos al backend, para evitar enviar campos vacíos que podrían causar errores o sobrescribir información existente con valores nulos.*/
   const removeEmptyFields = (data) => {
@@ -61,28 +60,7 @@ const Registro = ({}) => {
     data.cellphone = phoneWithoutCountryCode;
     data.countryCode = countryCode;
 
-    const nameExists = clients.some((c) => c.name === data.name && c.lastname === data.lastname && c.id !== parseInt(id));
 
-    if (nameExists) {
-        setShowError(true);
-        return;
-    }
-
-    const emailnullabel = data.email ? true : false;
-    const emailExists = clients.some((c) => c.email === data.email && c.id !== parseInt(data.id));
-    const cellphoneExists = clients.some((c) => c.cellphone === data.cellphone && c.id !== parseInt(data.id));
-
-
-    if (emailExists) {
-        toast.error("Este correo ya existe");
-        return;
-    }
-    if (cellphoneExists) {
-        toast.error("Este teléfono ya existe");
-        return;
-    }
-
-   
 
     try {
        
@@ -123,21 +101,7 @@ const Registro = ({}) => {
            /*Logica de redireccion */
        
     } catch (error) {
-        console.error("Error al crear el cliente:", error);
-        toast.error('❌ Error al registrar el cliente. Por favor, inténtalo de nuevo.', {
-          position: 'top-right',
-          autoClose: 5000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          style: {
-            position: 'fixed',
-            top: '20px',
-            right: '20px',
-            zIndex: 9999
-          }
-        });
+      toast.error(error.message);
     }
   };
 
@@ -190,11 +154,12 @@ const Registro = ({}) => {
                   <div className={styles.formCard}>
                     <div className={styles.formHeader}>
                       <h3 className={styles.formTitle}>
-                        <span className={styles.formTitleRegistro}>Registro</span> de{' '}
-                        <span className={styles.formTitleClientse}>Clientse</span>
+                        <span className={styles.formTitleClientse}> Comienza tu experiencia</span>
+                        <span className={styles.formTitleRegistro}> Inti</span> 
+                        <span className={styles.logoTextMar}>-MAR</span>
                       </h3>
                       <p className={styles.formDescription}>
-                        Completa tus datos para registrarte en nuestro sistema
+                      Completa tus datos para reservar.
                       </p>
                     </div>
                     <div className={styles.formContent}>
@@ -301,20 +266,18 @@ const Registro = ({}) => {
                         <div className={styles.formRow}>
                           <div className={styles.fieldGroup}>
                             <label className={styles.label}>
-                              Alergias <span className={styles.required}>*</span>
+                              Alergias
                             </label>
                             <textarea
                               className={styles.textarea}
                               placeholder="Describe tus alergias alimentarias o escribe 'Ninguna'"
-                              {...register('allergies', { 
-                                required: 'Este campo es obligatorio'
-                              })}
+                              {...register('allergies')}
                             />
                             {errors.allergies && <span className={styles.error}>{errors.allergies.message}</span>}
                           </div>
                           <div className={styles.fieldGroup}>
                             <label className={styles.label}>
-                              Idioma <span className={styles.required}>*</span>
+                              Idioma
                             </label>
                             <select
                               className={styles.select}
@@ -347,38 +310,88 @@ const Registro = ({}) => {
                         {/* Campos Opcionales */}
                         {showOptionalFields && (
                           <div className={styles.optionalFields}>
-                            <h4 className={styles.optionalTitle}>Información Adicional (Opcional)</h4>
-                            
-                            <div className={styles.fieldGroup}>
-                              <label className={styles.label}>Información adicional</label>
-                              <textarea
-                                className={styles.textarea}
-                                placeholder="Cualquier información adicional que desees compartir"
-                                {...register('informacionAdicional')}
-                              />
-                            </div>
+                            <h4 className={styles.optionalTitle}>Información Adicional</h4>
+                          
         
                             <div className={styles.formRow}>
                               <div className={styles.fieldGroup}>
-                                <label className={styles.label}>DNI</label>
-                                <input
-                                  type="text"
-                                  className={styles.input}
-                                  placeholder="12345678"
-                                  onKeyDown={(e) => handleKeyDown(e, "dni")}
-                                  {...register('dni', {
-                                    pattern: {
-                                      value: /^[0-9]*$/,
-                                      message: 'El DNI solo debe contener números'
-                                    },
-                                    minLength: {
-                                      value: 8,
-                                      message: "El DNI debe tener al menos 8 dígitos"
-                                    }
-                                  })}
-                                />
-                                {errors.dni && <span className={styles.error}>{errors.dni.message}</span>}
+                                <label className={styles.label}>Tipo de Documento</label>
+                                <div className={styles.radioGroup}>
+                                  <label className={styles.radioLabel}>
+                                    <input
+                                      type="radio"
+                                      name="documentType"
+                                      value="dni"
+                                      checked={documentType === 'dni'}
+                                      onChange={() => setDocumentType('dni')}
+                                      className={styles.radioInput}
+                                    />
+                                    <span className={styles.radioCustom}></span>
+                                    DNI
+                                  </label>
+                                  <label className={styles.radioLabel}>
+                                    <input
+                                      type="radio"
+                                      name="documentType"
+                                      value="pasaporte"
+                                      checked={documentType === 'pasaporte'}
+                                      onChange={() => setDocumentType('pasaporte')}
+                                      className={styles.radioInput}
+                                    />
+                                    <span className={styles.radioCustom}></span>
+                                    Pasaporte
+                                  </label>
+                                </div>
                               </div>
+                              <div className={styles.fieldGroup}>
+                                {documentType === 'dni' ? (
+                                  <>
+                                    <label className={styles.label}>DNI</label>
+                                    <input
+                                      type="text"
+                                      className={styles.input}
+                                      placeholder="12345678"
+                                      onKeyDown={(e) => handleKeyDown(e, "dni")}
+                                      {...register('dni', {
+                                        pattern: {
+                                          value: /^[0-9]*$/,
+                                          message: 'El DNI solo debe contener números'
+                                        },
+                                        minLength: {
+                                          value: 8,
+                                          message: "El DNI debe tener al menos 8 dígitos"
+                                        }
+                                      })}
+                                    />
+                                    {errors.dni && <span className={styles.error}>{errors.dni.message}</span>}
+                                  </>
+                                ) : (
+                                  <>
+                                    <label className={styles.label}>Pasaporte</label>
+                                    <input
+                                      type="text"
+                                      className={styles.input}
+                                      placeholder="ABC123456"
+                                      {...register('numero_pasaporte', {
+                                        pattern: {
+                                          value: /^[a-zA-Z0-9]+$/,
+                                          message: 'El pasaporte solo debe contener letras y números'
+                                        },
+                                        minLength: {
+                                          value: 8,
+                                          message: "El pasaporte debe tener al menos 8 caracteres"
+                                        }
+                                      })}
+                                    />
+                                    {errors.numero_pasaporte && (
+                                      <span className={styles.error}>{errors.numero_pasaporte.message}</span>
+                                    )}
+                                  </>
+                                )}
+                              </div>
+                            </div>
+                            
+                            <div className={styles.formRow}>
                               <div className={styles.fieldGroup}>
                                 <label className={styles.label}>RUC</label>
                                 <input
@@ -394,28 +407,12 @@ const Registro = ({}) => {
                                     minLength: {
                                       value: 10,
                                       message: "El RUC debe tener al menos 10 dígitos"
-                                  }
+                                    }
                                   })}
                                 />
                                 {errors.ruc && <span className={styles.error}>{errors.ruc.message}</span>}
                               </div>
-                            </div>
-        
-                            <div className={styles.formRow}>
-                              <div className={styles.fieldGroup}>
-                                <label className={styles.label}>Pasaporte</label>
-                                <input
-                                  type="text"
-                                  className={styles.input}
-                                  placeholder="ABC123456"
-                                  {...register('numero_pasaporte', {
-                                    minLength: {
-                                        value: 8,
-                                        message: "El pasaporte debe tener al menos 8 caracteres"
-                                    }
-                                  })}
-                                />
-                              </div>
+                              
                               <div className={styles.fieldGroup}>
                                 <label className={styles.label}>Dirección</label>
                                 <input

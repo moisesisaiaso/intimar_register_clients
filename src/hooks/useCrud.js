@@ -18,19 +18,20 @@ export const useCrud = () => {
 
     /* Create */
     const postApi = async (path, data) => {
-        console.log(data);
-        return await axiosInstance
-            .post(path, data)
-            .then(() => {
-                console.log("Data enviada");
-                if (apiData) {
-                    console.log("apiData: " + apiData);
-                    setApiData([data, ...apiData]);
-                }
-            })
-            .catch((error) => console.log(error));
-    };
-
+        try {
+          const response = await axiosInstance.post(path, data);
+          console.log("Data enviada");
+      
+          if (apiData) {
+            console.log("apiData: " + apiData);
+            setApiData([data, ...apiData]);
+          }
+      
+          return response.data;
+        } catch (error) {
+          throw new Error(error.response?.data?.message || "Error al enviar datos");
+        }
+   };
     
     useEffect(() => {
         console.log("un elemento:", apiData);
