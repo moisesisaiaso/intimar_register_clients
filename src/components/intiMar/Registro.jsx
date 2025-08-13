@@ -19,7 +19,7 @@ const Registro = ({}) => {
   const [serverErrors, setServerErrors] = useState({});
   const [showError, setShowError] = useState(false);
   const [documentType, setDocumentType] = useState('dni');
-  const [ , ,createClient] = useCrud();
+  const [ ,createClient] = useCrud();
   const navigate = useNavigate();
 
   
@@ -67,7 +67,8 @@ const Registro = ({}) => {
             await createClient("/intimar/client", data);
             
             // Mostrar notificación fija en la pantalla
-            toast.success('✅ Cliente registrado exitosamente', {
+            toast.success(`Registro exitoso. 
+              Un administrador gestionará su reserva en breve y se le notificará oportunamente`, {
               position: 'top-right',
               autoClose: 5000,
               hideProgressBar: false,
@@ -76,6 +77,7 @@ const Registro = ({}) => {
               draggable: true,
               progress: undefined,
               style: {
+                width: '22rem',
                 position: 'fixed',
                 top: '20px',
                 right: '20px',

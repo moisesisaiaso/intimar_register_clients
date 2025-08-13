@@ -4,28 +4,15 @@ import { useEffect, useState } from "react";
 export const useCrud = () => {
     const [apiData, setApiData] = useState();
 
-    /* Read */
-    const getApi = async (path) => {
-        return await axiosInstance
-            .get(path)
-            .then(({ data }) => {
-                setApiData(data.data);
-                console.log(data.data);
-                console.log("datos recibidos");
-            })
-            .catch((error) => console.log(error));
-    };
 
     /* Create */
     const postApi = async (path, data) => {
         try {
           const response = await axiosInstance.post(path, data);
           console.log("Data enviada");
-      
-          if (apiData) {
-            console.log("apiData: " + apiData);
-            setApiData([data, ...apiData]);
-          }
+        
+          
+          setApiData(response.data);
       
           return response.data;
         } catch (error) {
@@ -37,5 +24,5 @@ export const useCrud = () => {
         console.log("un elemento:", apiData);
     }, [apiData]);
 
-    return [apiData, getApi, postApi];
+    return [apiData, postApi];
 };
